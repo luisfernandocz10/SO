@@ -3,3 +3,64 @@
 	función open:	int open(const char *pathname, int flags);
 	función read:	ssize_t read(int fd, void *buf, size_t count);
 	función close: 	int close(int fd);
+
+02.c
+	fork(). Procesos padre, hijo, huérfano, zombie
+
+	pid_t fork();
+
+	- Crea un nuevo proceso ("hijo")
+	- El proceso hijo es un duplicado del "padre"
+	- Los dos procesos:
+			- Tienen PIDs diferentes
+			- Corren en espacios de memoria separados
+
+	Retorno de dork()
+		- Si todo va bien:
+				- retorno al opadre: PID del hijo
+				- retorno al hijo: 0
+		- Si hay errores:
+				- retorno al padre: -1
+				 (el hijo no es creado)
+
+	Para ver los procesos usar otra terminal y poner 
+		ps lf
+		kill -9 'pid'		// Mata al proceso
+	
+	Como Compilar
+		gcc -Wall 02.c -o var
+		./var
+
+	Fuente:
+		https://www.youtube.com/watch?v=VwjP-KFuZCM
+
+
+03.c
+	for(), wait y multiples procesos hijo
+	
+	pid_t fork();
+	
+	pid_t wait(int *wstatus);
+	WEXITSTATUS(wstatus)
+
+	Fuente:
+		https://www.youtube.com/watch?v=Dt9z_ohQWHI
+
+
+
+
+
+
+
+
+
+
+
+
+
+0.c
+	Mionitorizar cambios en un directorio
+	qué archivos han sido modificados en un directorio
+	funciones
+		int inotify_init(void);
+		int
